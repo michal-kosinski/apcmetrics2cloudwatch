@@ -43,5 +43,6 @@ def put_ups_metrics(params):
         logging.debug(f"API response: {response}")
 
 
-put_ups_metrics(params)
-time.sleep(5)
+while True:
+    put_ups_metrics(params)
+    time.sleep(60)
