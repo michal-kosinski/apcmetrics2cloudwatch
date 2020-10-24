@@ -163,5 +163,20 @@ Once metrics are gathering we can create dashboards in the AWS Management Consol
 Put AWS Credentials (access key and secret access key) under "cloudwatch" profile into *.aws/credentials* file located in the home directory of the service user.
 Make sure the associated policy allows **ONLY** for PutMetricData operations.
 
+## Costs
+If you run upsmetrics service 24x7 for a 30-day month with 5 minutes granularity, and you published 11 custom metrics via the PutMetricData API, your charges would be as follows:
+
+Total number of metrics = 11 metrics
+
+First 10,000 custom metrics @$0.30 per metric = 11 * $0.30 = $3,3
+
+First 1,000,000 API requests = $0
+
+Total number of API requests = 11 * (43,200 minutes/5 minutes) = 95040
+
+**Monthly CloudWatch charges = $3,3 per month**
+
 ## Links
-[Publishing UPS metrics into the AWS CloudWatch](https://michal-kosinski.medium.com/publishing-ups-metrics-into-the-aws-cloudwatch-55bb600c1745)
+@medium.com: [Publishing UPS metrics into the AWS CloudWatch](https://michal-kosinski.medium.com/publishing-ups-metrics-into-the-aws-cloudwatch-55bb600c1745)
+
+@linkedin: [Publishing UPS metrics into the AWS CloudWatch](https://www.linkedin.com/pulse/publishing-ups-metrics-aws-cloudwatch-micha%C5%82-kosi%C5%84ski/)

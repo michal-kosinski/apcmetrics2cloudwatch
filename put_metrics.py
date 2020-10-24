@@ -47,9 +47,9 @@ class PutUpsMetricsToCloudWatch:
                 apcaccess_result[key.strip(' .')] = value.strip()
         return apcaccess_result
 
-    def put_ups_metrics(self, params):
+    def put_ups_metrics(self, ups_params=UPS_PARAMS):
         ups_metrics = self.__get_ups_metrics()
-        for param in params:
+        for param in ups_params:
             value = float(ups_metrics[param].split(" ", 1)[0])
             unit = ups_metrics[param].split(" ", 1)[1]
             self.logger.debug(f"Unit for {param}: {unit}")
@@ -77,7 +77,6 @@ class PutUpsMetricsToCloudWatch:
             self.logger.debug(f"API response: {response}")
 
 
-if __name__ == '__main__':
-    while True:
-        PutUpsMetricsToCloudWatch().put_ups_metrics(PutUpsMetricsToCloudWatch.UPS_PARAMS)
-        time.sleep(PutUpsMetricsToCloudWatch.PUBLISH_INTERVAL_IN_SECONDS)
+while True:
+    PutUpsMetricsToCloudWatch().put_ups_metrics()
+    time.sleep(PutUpsMetricsToCloudWatch.PUBLISH_INTERVAL_IN_SECONDS)
