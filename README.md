@@ -161,5 +161,5 @@ Once metrics are gathering we can create dashboards in the AWS Management Consol
 
 ## Note about AWS Credentials
 Put AWS Credentials (access key and secret access key) under "cloudwatch" profile into *.aws/credentials* file located in the home directory of the service user.
-Make sure the associated policy allows **ONLY** for PutMetricData operation.
+Make sure the associated policy allows **ONLY** for PutMetricData operations.
 
