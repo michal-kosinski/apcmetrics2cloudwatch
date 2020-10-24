@@ -8,7 +8,7 @@ my_config = Config(
     region_name='eu-west-1'
 )
 
-params = ["LINEV", "OUTPUTV", "LOTRANS", "HITRANS", "BATTV", "NOMOUTV", "NOMBATTV", "TIMELEFT", "LOADPCT", "ITEMP"]
+params = ["LINEV", "OUTPUTV", "LOTRANS", "HITRANS", "BATTV", "NOMOUTV", "NOMBATTV", "TIMELEFT", "LOADPCT", "ITEMP", "BCHARGE"]
 
 logging.basicConfig(level=logging.INFO)
 session = boto3.session.Session(profile_name='cloudwatch')
