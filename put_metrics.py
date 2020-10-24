@@ -8,14 +8,14 @@ from botocore.config import Config
 
 class LoggerConfig:
 
-    def __init__(self):
+    def __init__(self, class_name):
         self.handler = logging.StreamHandler()
-
-    def return_logger(self, class_name):
-        self.formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        self.handler.setFormatter(self.formatter)
-        self.handler.setLevel(logging.INFO)
         self.logger = logging.getLogger(class_name)
+
+    def return_logger(self):
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        self.handler.setFormatter(formatter)
+        self.handler.setLevel(logging.INFO)
         self.logger.addHandler(self.handler)
         self.logger.setLevel(logging.INFO)
         return self.logger
@@ -30,7 +30,7 @@ class PutUpsMetricsToCloudWatch:
                   "ITEMP", "BCHARGE"]
 
     def __init__(self):
-        self.logger = LoggerConfig().return_logger(self.__class__.__name__)
+        self.logger = LoggerConfig(class_name=self.__class__.__name__).return_logger()
         self.session = session.Session(profile_name=self.BOTO_PROFILE)
         self.cw = self.session.client('cloudwatch', config=self.BOTO_CONFIG)
 
