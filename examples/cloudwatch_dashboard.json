@@ -1,0 +1,136 @@
+{
+  "widgets": [
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 0,
+      "width": 24,
+      "height": 9,
+      "properties": {
+        "metrics": [
+          [ "Home/UPS/APC", "TIMELEFT", "Units", "Minutes" ],
+          [ ".", "LOADPCT", ".", "Percent" ],
+          [ ".", "HITRANS", ".", "Volts" ],
+          [ ".", "BATTV", ".", "." ],
+          [ ".", "NOMBATTV", ".", "." ],
+          [ ".", "LINEV", ".", "." ],
+          [ ".", "OUTPUTV", ".", "." ],
+          [ ".", "LOTRANS", ".", "." ],
+          [ ".", "NOMOUTV", ".", "." ],
+          [ ".", "ITEMP", ".", "C" ],
+          [ ".", "BCHARGE", ".", "Percent" ]
+        ],
+        "view": "singleValue",
+        "region": "eu-west-1",
+        "title": "APC Smart-UPS 1500 - numbers",
+        "period": 300
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 15,
+      "width": 24,
+      "height": 6,
+      "properties": {
+        "metrics": [
+          [ "Home/UPS/APC", "LOADPCT", "Units", "Percent" ]
+        ],
+        "view": "timeSeries",
+        "stacked": true,
+        "region": "eu-west-1",
+        "setPeriodToTimeRange": true,
+        "title": "APC Smart-UPS 1500 - load (percent)",
+        "period": 300,
+        "legend": {
+          "position": "hidden"
+        }
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 9,
+      "width": 24,
+      "height": 6,
+      "properties": {
+        "metrics": [
+          [ "Home/UPS/APC", "LINEV", "Units", "Volts" ],
+          [ ".", "OUTPUTV", ".", "." ],
+          [ ".", "LOTRANS", ".", "." ],
+          [ ".", "NOMOUTV", ".", "." ],
+          [ ".", "HITRANS", ".", "." ],
+          [ ".", "BATTV", ".", "." ],
+          [ ".", "NOMBATTV", ".", "." ],
+          [ ".", "ITEMP", ".", "C" ]
+        ],
+        "view": "timeSeries",
+        "stacked": true,
+        "region": "eu-west-1",
+        "legend": {
+          "position": "bottom"
+        },
+        "title": "APC Smart-UPS 1500 - stacked area",
+        "period": 300,
+        "stat": "Average"
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 21,
+      "width": 24,
+      "height": 6,
+      "properties": {
+        "view": "timeSeries",
+        "stacked": true,
+        "metrics": [
+          [ "Home/UPS/APC", "TIMELEFT", "Units", "Minutes" ]
+        ],
+        "region": "eu-west-1",
+        "title": "APC Smart-UPS 1500 - time left (minutes)",
+        "legend": {
+          "position": "hidden"
+        }
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 27,
+      "width": 24,
+      "height": 6,
+      "properties": {
+        "view": "timeSeries",
+        "stacked": true,
+        "metrics": [
+          [ "Home/UPS/APC", "ITEMP", "Units", "C" ]
+        ],
+        "region": "eu-west-1",
+        "title": "APC Smart-UPS 1500 - temperature (c)",
+        "legend": {
+          "position": "hidden"
+        }
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 33,
+      "width": 24,
+      "height": 6,
+      "properties": {
+        "view": "timeSeries",
+        "stacked": true,
+        "metrics": [
+          [ "Home/UPS/APC", "BCHARGE", "Units", "Percent" ]
+        ],
+        "region": "eu-west-1",
+        "title": "APC Smart-UPS 1500 - battery charge (percent)",
+        "legend": {
+          "position": "hidden"
+        }
+      }
+    }
+  ]
+}

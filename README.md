@@ -2,7 +2,7 @@
 ## About
 Script for publishing APC UPS (apcupsd) metrics into AWS CloudWatch Metrics. You can create and publish AWS CloudWatch Dashboard. See [live example](https://cloudwatch.amazonaws.com/dashboard.html?dashboard=Home-UPS-APC&context=eyJSIjoidXMtZWFzdC0xIiwiRCI6ImN3LWRiLTcxMDM5ODUwNDIwOSIsIlUiOiJ1cy1lYXN0LTFfYXcxb0JtODdUIiwiQyI6Im90Y3FuaDEybHYwbWhmbGVzamJocm04azUiLCJJIjoidXMtZWFzdC0xOjg4YmY2ODBiLWYxMTQtNDVjOS05YzlkLTE4OTUzZTdlNDIxMSIsIk0iOiJQdWJsaWMifQ%3D%3D).
 
-![alt text](images/example_cw_dashboard.png)
+![alt text](images/cloudwatch_dashboard.png)
 ## Installation on Ubuntu Linux
 * Install apcupsd package:
 ```
@@ -132,7 +132,7 @@ END APC  : 2020-10-24 14:36:02 +0200
 * Open **upsmetrics.service.example** file in the editor and set correct path to **put_metrics.py** script
 * Copy new service configuration file for systemd:
 ```
-sudo cp upsmetrics.service.example /lib/systemd/system/upsmetrics.service
+sudo cp examples/upsmetrics.service /lib/systemd/system/upsmetrics.service
 ```
 * Enable and start upsmetrics as a system service:
 ```
