@@ -1,9 +1,11 @@
 # apcmetrics2cloudwatch
 ## About
-Script for publishing APC UPS metrics into the AWS CloudWatch Metrics. From there you can also create and publish CloudWatch Dashboards. See [live example](https://cloudwatch.amazonaws.com/dashboard.html?dashboard=Home-UPS-APC&context=eyJSIjoidXMtZWFzdC0xIiwiRCI6ImN3LWRiLTcxMDM5ODUwNDIwOSIsIlUiOiJ1cy1lYXN0LTFfYXcxb0JtODdUIiwiQyI6Im90Y3FuaDEybHYwbWhmbGVzamJocm04azUiLCJJIjoidXMtZWFzdC0xOjg4YmY2ODBiLWYxMTQtNDVjOS05YzlkLTE4OTUzZTdlNDIxMSIsIk0iOiJQdWJsaWMifQ%3D%3D).
+Script for publishing APC UPS metrics into the AWS CloudWatch Metrics. From there you can also create and publish CloudWatch Dashboards. See [live example](https://cloudwatch.amazonaws.com/dashboard.html?dashboard=Home-UPS-APC&context=eyJSIjoidXMtZWFzdC0xIiwiRCI6ImN3LWRiLTcxMDM5ODUwNDIwOSIsIlUiOiJ1cy1lYXN0LTFfYXcxb0JtODdUIiwiQyI6Im90Y3FuaDEybHYwbWhmbGVzamJocm04azUiLCJJIjoidXMtZWFzdC0xOjg4YmY2ODBiLWYxMTQtNDVjOS05YzlkLTE4OTUzZTdlNDIxMSIsIk0iOiJQdWJsaWMifQ%3D%3D) for my UPS.
+
+All installation and configuration steps provided here are based on Ubuntu Linux 20.04 with APC Smart-UPS 1500 (usb connected). Script is written in Python 3.8.
 
 ![alt text](images/cloudwatch_dashboard.png)
-## Installation on Ubuntu Linux
+## Installation and configuration of apcupsd service
 * Install **apcupsd** package:
 ```
 sudo apt-get install apcupsd
@@ -129,6 +131,7 @@ NOMBATTV : 24.0 Volts
 FIRMWARE : 653.18.I USB FW:7.3
 END APC  : 2020-10-24 14:36:02 +0200
 ```
+## Installation and configuration of script for metrics publishing
 * Open **upsmetrics.service** example file in the editor and set correct path to **put_metrics.py** script
 * Copy modified configuration file to the systemd directory:
 ```
@@ -152,6 +155,11 @@ sudo systemctl status upsmetrics
 
 paź 24 14:10:32 michal-Z390 systemd[1]: Started Put APC UPS metrics to AWS CloudWatch.
 ```
-## AWS Credentials
-Put AWS Credentials under "cloudwatch" profile into *.aws/credentials* file located in the home directory of the service user.
-Make sure the associated policy allows **only** for PutMetricData operation.
+
+## Creating CloudWatch Dashboard
+Once metrics are gathering we can create dashboards in the AWS Management Console. Example dashboard configuration exported to JSON file can be found in the examples directory.
+
+## Note about AWS Credentials
+Put AWS Credentials (access key and secret access key) under "cloudwatch" profile into *.aws/credentials* file located in the home directory of the service user.
+Make sure the associated policy allows **ONLY** for PutMetricData operation.
+

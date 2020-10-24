@@ -7,6 +7,7 @@ from botocore.config import Config
 
 
 class LoggerConfig:
+    LOG_LEVEL = "INFO"
 
     def __init__(self, class_name):
         self.handler = logging.StreamHandler()
@@ -14,10 +15,11 @@ class LoggerConfig:
 
     def return_logger(self):
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        log_level = logging.getLevelName(self.LOG_LEVEL)
         self.handler.setFormatter(formatter)
-        self.handler.setLevel(logging.INFO)
+        self.handler.setLevel(log_level)
         self.logger.addHandler(self.handler)
-        self.logger.setLevel(logging.INFO)
+        self.logger.setLevel(log_level)
         return self.logger
 
 
@@ -49,7 +51,7 @@ class PutUpsMetricsToCloudWatch:
         for param in params:
             value = float(ups_metrics[param].split(" ", 1)[0])
             unit = ups_metrics[param].split(" ", 1)[1]
-            self.logger.info(f"Unit for {param}: {unit}")
+            self.logger.debug(f"Unit for {param}: {unit}")
             if unit == "Percent":
                 unit_for_metric = "Percent"
             else:
