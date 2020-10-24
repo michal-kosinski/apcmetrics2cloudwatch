@@ -30,6 +30,7 @@ class PutUpsMetricsToCloudWatch:
     )
     UPS_PARAMS = ["LINEV", "OUTPUTV", "LOTRANS", "HITRANS", "BATTV", "NOMOUTV", "NOMBATTV", "TIMELEFT", "LOADPCT",
                   "ITEMP", "BCHARGE"]
+    PUBLISH_INTERVAL_IN_SECONDS = 300
 
     def __init__(self):
         self.logger = LoggerConfig(class_name=self.__class__.__name__).return_logger()
@@ -79,4 +80,4 @@ class PutUpsMetricsToCloudWatch:
 if __name__ == '__main__':
     while True:
         PutUpsMetricsToCloudWatch().put_ups_metrics(PutUpsMetricsToCloudWatch.UPS_PARAMS)
-        time.sleep(300)
+        time.sleep(PutUpsMetricsToCloudWatch.PUBLISH_INTERVAL_IN_SECONDS)
