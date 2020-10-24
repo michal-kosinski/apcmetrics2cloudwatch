@@ -1,6 +1,8 @@
 # apcmetrics2cloudwatch
 ## About
-Script for publishing APC UPS (apcupsd) metrics into AWS CloudWatch Metrics
+Script for publishing APC UPS (apcupsd) metrics into AWS CloudWatch Metrics. You can create and publish AWS CloudWatch Dashboard. See [live example](https://cloudwatch.amazonaws.com/dashboard.html?dashboard=Home-UPS-APC&context=eyJSIjoidXMtZWFzdC0xIiwiRCI6ImN3LWRiLTcxMDM5ODUwNDIwOSIsIlUiOiJ1cy1lYXN0LTFfYXcxb0JtODdUIiwiQyI6Im90Y3FuaDEybHYwbWhmbGVzamJocm04azUiLCJJIjoidXMtZWFzdC0xOjg4YmY2ODBiLWYxMTQtNDVjOS05YzlkLTE4OTUzZTdlNDIxMSIsIk0iOiJQdWJsaWMifQ%3D%3D).
+
+![alt text](images/example_cw_dashboard.png)
 ## Installation on Ubuntu Linux
 * Install apcupsd package:
 ```
@@ -153,6 +155,3 @@ paź 24 14:10:32 michal-Z390 systemd[1]: Started Put APC UPS metrics to AWS Clou
 ## AWS Credentials
 Put AWS Credentials under "cloudwatch" profile into *.aws/credentials* file located in the home directory of the service user.
 Make sure the associated policy allows only for PutMetricData operation.
-## Define and publish AWS CloudWatch Dashboard
-[Example CloudWatch Dashboard](https://cloudwatch.amazonaws.com/dashboard.html?dashboard=Home-UPS-APC&context=eyJSIjoidXMtZWFzdC0xIiwiRCI6ImN3LWRiLTcxMDM5ODUwNDIwOSIsIlUiOiJ1cy1lYXN0LTFfYXcxb0JtODdUIiwiQyI6Im90Y3FuaDEybHYwbWhmbGVzamJocm04azUiLCJJIjoidXMtZWFzdC0xOjg4YmY2ODBiLWYxMTQtNDVjOS05YzlkLTE4OTUzZTdlNDIxMSIsIk0iOiJQdWJsaWMifQ%3D%3D)
-
