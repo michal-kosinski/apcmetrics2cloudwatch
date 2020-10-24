@@ -45,4 +45,4 @@ def put_ups_metrics(params):
 
 while True:
     put_ups_metrics(params)
-    time.sleep(60)
+    time.sleep(300)
