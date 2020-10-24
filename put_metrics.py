@@ -1,24 +1,25 @@
-from boto3 import session
-from botocore.config import Config
 import logging
 import subprocess
 import time
 
+from boto3 import session
+from botocore.config import Config
+
 
 class PutUpsMetricsToCloudWatch:
-    my_config = Config(
+    BOTO_PROFILE = "cloudwatch"
+    BOTO_CONFIG = Config(
         region_name='eu-west-1'
     )
 
-    params = ["LINEV", "OUTPUTV", "LOTRANS", "HITRANS", "BATTV", "NOMOUTV", "NOMBATTV", "TIMELEFT", "LOADPCT", "ITEMP",
-              "BCHARGE"]
-
+    UPS_PARAMS = ["LINEV", "OUTPUTV", "LOTRANS", "HITRANS", "BATTV", "NOMOUTV", "NOMBATTV", "TIMELEFT", "LOADPCT",
+                  "ITEMP", "BCHARGE"]
 
     logging.basicConfig(level=logging.INFO)
-    session = session.Session(profile_name='cloudwatch')
-    cw = session.client('cloudwatch', config=my_config)
+    session = session.Session(profile_name=BOTO_PROFILE)
+    cw = session.client('cloudwatch', config=BOTO_CONFIG)
 
-    def get_ups_metrics(self):
+    def __get_ups_metrics(self):
         apcaccess_output = subprocess.check_output("apcaccess", shell=True, encoding='utf8')
         apcaccess_result = {}
         for row in apcaccess_output.split('\n'):
@@ -28,7 +29,7 @@ class PutUpsMetricsToCloudWatch:
         return apcaccess_result
 
     def put_ups_metrics(self, params):
-        ups_metrics = self.get_ups_metrics()
+        ups_metrics = self.__get_ups_metrics()
         for param in params:
             value = float(ups_metrics[param].split(" ", 1)[0])
             unit = ups_metrics[param].split(" ", 1)[1]
@@ -60,5 +61,5 @@ class PutUpsMetricsToCloudWatch:
 
 if __name__ == '__main__':
     while True:
-        PutUpsMetricsToCloudWatch().put_ups_metrics(PutUpsMetricsToCloudWatch.params)
+        PutUpsMetricsToCloudWatch().put_ups_metrics(PutUpsMetricsToCloudWatch.UPS_PARAMS)
         time.sleep(300)
