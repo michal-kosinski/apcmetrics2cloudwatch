@@ -1,14 +1,14 @@
 # apcmetrics2cloudwatch
 ## About
-Script for publishing APC UPS (apcupsd) metrics into AWS CloudWatch Metrics. You can create and publish AWS CloudWatch Dashboard. See [live example](https://cloudwatch.amazonaws.com/dashboard.html?dashboard=Home-UPS-APC&context=eyJSIjoidXMtZWFzdC0xIiwiRCI6ImN3LWRiLTcxMDM5ODUwNDIwOSIsIlUiOiJ1cy1lYXN0LTFfYXcxb0JtODdUIiwiQyI6Im90Y3FuaDEybHYwbWhmbGVzamJocm04azUiLCJJIjoidXMtZWFzdC0xOjg4YmY2ODBiLWYxMTQtNDVjOS05YzlkLTE4OTUzZTdlNDIxMSIsIk0iOiJQdWJsaWMifQ%3D%3D).
+Script for publishing APC UPS metrics into the AWS CloudWatch Metrics. From there you can also create and publish CloudWatch Dashboards. See [live example](https://cloudwatch.amazonaws.com/dashboard.html?dashboard=Home-UPS-APC&context=eyJSIjoidXMtZWFzdC0xIiwiRCI6ImN3LWRiLTcxMDM5ODUwNDIwOSIsIlUiOiJ1cy1lYXN0LTFfYXcxb0JtODdUIiwiQyI6Im90Y3FuaDEybHYwbWhmbGVzamJocm04azUiLCJJIjoidXMtZWFzdC0xOjg4YmY2ODBiLWYxMTQtNDVjOS05YzlkLTE4OTUzZTdlNDIxMSIsIk0iOiJQdWJsaWMifQ%3D%3D).
 
 ![alt text](images/cloudwatch_dashboard.png)
 ## Installation on Ubuntu Linux
-* Install apcupsd package:
+* Install **apcupsd** package:
 ```
 sudo apt-get install apcupsd
 ```
-* Configure apcupsd:
+* Configure **apcupsd** service:
 ```
 sudo echo "ISCONFIGURED=yes" >> /etc/default/apcupsd
 ```
@@ -19,7 +19,7 @@ UPSCABLE usb
 UPSTYPE usb
 DEVICE" >> /etc/apcupsd/apcupsd.conf
 ```
-* Test connection with apctest:
+* Test the connection with **apctest** tool:
 ```
 $ apctest
 
@@ -55,7 +55,7 @@ Please select the function you want to perform.
 
 Select function number:
 ```
-* Enable and start apcupsd as a system service:
+* Enable, start and check the status of **apcupsd** system service:
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable apcupsd
@@ -80,7 +80,7 @@ paź 24 14:03:38 michal-Z390 apcupsd[34708]: apcupsd 3.14.14 (31 May 2016) debia
 paź 24 14:03:38 michal-Z390 systemd[1]: Started UPS power management daemon.
 paź 24 14:03:39 michal-Z390 apcupsd[34708]: NIS server startup succeeded
 ```
-* Test apcupsd service with apcaccess:
+* Test **apcupsd** service with **apcaccess** tool:
 ```
 $ apcaccess
 
@@ -129,12 +129,12 @@ NOMBATTV : 24.0 Volts
 FIRMWARE : 653.18.I USB FW:7.3
 END APC  : 2020-10-24 14:36:02 +0200
 ```
-* Open **upsmetrics.service.example** file in the editor and set correct path to **put_metrics.py** script
-* Copy new service configuration file for systemd:
+* Open **upsmetrics.service** example file in the editor and set correct path to **put_metrics.py** script
+* Copy modified configuration file to the systemd directory:
 ```
 sudo cp examples/upsmetrics.service /lib/systemd/system/upsmetrics.service
 ```
-* Enable and start upsmetrics as a system service:
+* Enable, start and check the status of **upsmetrics** system service:
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable upsmetrics
