@@ -28,18 +28,25 @@ def get_ups_data():
 def put_ups_metrics(params):
     values = get_ups_data()
     for param in params:
-        value = values[param].split(" ", 1)[0]
+        value = float(values[param].split(" ", 1)[0])
+        unit = values[param].split(" ", 1)[1]
+        logging.info(f"Unit for {param}: {unit}")
+        if unit == "Percent":
+            unit_for_metric = "Percent"
+        else:
+            unit_for_metric = "None"
         response = cw.put_metric_data(
             Namespace='Home/UPS/APC',
             MetricData=[
                 {
                     'MetricName': param,
-                    'Value': float(value),
+                    'Value': value,
+                    'Unit': unit_for_metric,
                 },
             ]
         )
 
-        logging.info(f"Putting metric for param {param} with value {value}")
+        logging.info(f"Putting metric for param: {param} with unit: {unit_for_metric} and value: {value}")
         logging.debug(f"API response: {response}")
 
 
