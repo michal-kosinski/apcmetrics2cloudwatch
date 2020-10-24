@@ -12,10 +12,12 @@ class LoggerConfig:
         self.handler = logging.StreamHandler()
 
     def return_logger(self, class_name):
+        self.formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        self.handler.setFormatter(self.formatter)
         self.handler.setLevel(logging.INFO)
         self.logger = logging.getLogger(class_name)
-        self.logger.setLevel(logging.INFO)
         self.logger.addHandler(self.handler)
+        self.logger.setLevel(logging.INFO)
         return self.logger
 
 
@@ -68,7 +70,6 @@ class PutUpsMetricsToCloudWatch:
                     },
                 ]
             )
-
             self.logger.info(f"Putting metric for param: {param} with unit: {unit_for_metric} and value: {value}")
             self.logger.debug(f"API response: {response}")
 
