@@ -1,0 +1,105 @@
+
+
+2020-10-24 13:58:15 apctest 3.14.14 (31 May 2016) debian
+Checking configuration ...
+sharenet.type = Network & ShareUPS Disabled
+cable.type = USB Cable
+mode.type = USB UPS Driver
+apctest FATAL ERROR in apctest.c at line 311
+Unable to create UPS lock file.
+  If apcupsd or apctest is already running,
+  please stop it and run this program again.
+apctest error termination completed
+
+
+2020-10-24 14:01:09 apctest 3.14.14 (31 May 2016) debian
+Checking configuration ...
+sharenet.type = Network & ShareUPS Disabled
+cable.type = USB Cable
+mode.type = USB UPS Driver
+apctest FATAL ERROR in apctest.c at line 311
+Unable to create UPS lock file.
+  If apcupsd or apctest is already running,
+  please stop it and run this program again.
+apctest error termination completed
+
+
+2020-10-24 14:01:19 apctest 3.14.14 (31 May 2016) debian
+Checking configuration ...
+sharenet.type = Network & ShareUPS Disabled
+cable.type = USB Cable
+mode.type = USB UPS Driver
+Setting up the port ...
+apctest FATAL ERROR in apctest.c at line 319
+Unable to open UPS device.
+  If apcupsd or apctest is already running,
+  please stop it and run this program again.
+apctest error termination completed
+
+
+2020-10-24 14:01:48 apctest 3.14.14 (31 May 2016) debian
+Checking configuration ...
+sharenet.type = Network & ShareUPS Disabled
+cable.type = USB Cable
+mode.type = USB UPS Driver
+Setting up the port ...
+Doing prep_device() ...
+
+You are using a USB cable type, so I'm entering USB test mode
+Hello, this is the apcupsd Cable Test program.
+This part of apctest is for testing USB UPSes.
+
+Getting UPS capabilities...SUCCESS
+
+Please select the function you want to perform.
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: Q
+
+2020-10-24 14:01:56 End apctest.
+
+
+2020-10-24 14:01:56 apctest 3.14.14 (31 May 2016) debian
+Checking configuration ...
+sharenet.type = Network & ShareUPS Disabled
+cable.type = USB Cable
+mode.type = USB UPS Driver
+Setting up the port ...
+Doing prep_device() ...
+
+You are using a USB cable type, so I'm entering USB test mode
+Hello, this is the apcupsd Cable Test program.
+This part of apctest is for testing USB UPSes.
+
+Getting UPS capabilities...SUCCESS
+
+Please select the function you want to perform.
+
+1)  Test kill UPS power
+2)  Perform self-test
+3)  Read last self-test result
+4)  View/Change battery date
+5)  View manufacturing date
+6)  View/Change alarm behavior
+7)  View/Change sensitivity
+8)  View/Change low transfer voltage
+9)  View/Change high transfer voltage
+10) Perform battery calibration
+11) Test alarm
+12) View/Change self-test interval
+ Q) Quit
+
+Select function number: 2020-10-24 14:03:25 apctest exiting, signal 2
