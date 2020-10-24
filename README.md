@@ -154,4 +154,4 @@ paź 24 14:10:32 michal-Z390 systemd[1]: Started Put APC UPS metrics to AWS Clou
 ```
 ## AWS Credentials
 Put AWS Credentials under "cloudwatch" profile into *.aws/credentials* file located in the home directory of the service user.
-Make sure the associated policy allows only for PutMetricData operation.
+Make sure the associated policy allows **only** for PutMetricData operation.
