@@ -40,6 +40,12 @@ def put_ups_metrics(params):
             MetricData=[
                 {
                     'MetricName': param,
+                    'Dimensions': [
+                        {
+                            'Name': 'Units',
+                            'Value': unit
+                        },
+                    ],
                     'Value': value,
                     'Unit': unit_for_metric,
                 },
