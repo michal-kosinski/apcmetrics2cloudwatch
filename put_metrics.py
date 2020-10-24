@@ -6,20 +6,34 @@ from boto3 import session
 from botocore.config import Config
 
 
+class LoggerConfig:
+
+    def __init__(self):
+        self.handler = logging.StreamHandler()
+
+    def return_logger(self, class_name):
+        self.handler.setLevel(logging.INFO)
+        self.logger = logging.getLogger(class_name)
+        self.logger.setLevel(logging.INFO)
+        self.logger.addHandler(self.handler)
+        return self.logger
+
+
 class PutUpsMetricsToCloudWatch:
     BOTO_PROFILE = "cloudwatch"
     BOTO_CONFIG = Config(
         region_name='eu-west-1'
     )
-
     UPS_PARAMS = ["LINEV", "OUTPUTV", "LOTRANS", "HITRANS", "BATTV", "NOMOUTV", "NOMBATTV", "TIMELEFT", "LOADPCT",
                   "ITEMP", "BCHARGE"]
 
-    logging.basicConfig(level=logging.INFO)
-    session = session.Session(profile_name=BOTO_PROFILE)
-    cw = session.client('cloudwatch', config=BOTO_CONFIG)
+    def __init__(self):
+        self.logger = LoggerConfig().return_logger(self.__class__.__name__)
+        self.session = session.Session(profile_name=self.BOTO_PROFILE)
+        self.cw = self.session.client('cloudwatch', config=self.BOTO_CONFIG)
 
-    def __get_ups_metrics(self):
+    @staticmethod
+    def __get_ups_metrics():
         apcaccess_output = subprocess.check_output("apcaccess", shell=True, encoding='utf8')
         apcaccess_result = {}
         for row in apcaccess_output.split('\n'):
@@ -33,7 +47,7 @@ class PutUpsMetricsToCloudWatch:
         for param in params:
             value = float(ups_metrics[param].split(" ", 1)[0])
             unit = ups_metrics[param].split(" ", 1)[1]
-            logging.info(f"Unit for {param}: {unit}")
+            self.logger.info(f"Unit for {param}: {unit}")
             if unit == "Percent":
                 unit_for_metric = "Percent"
             else:
@@ -55,8 +69,8 @@ class PutUpsMetricsToCloudWatch:
                 ]
             )
 
-            logging.info(f"Putting metric for param: {param} with unit: {unit_for_metric} and value: {value}")
-            logging.debug(f"API response: {response}")
+            self.logger.info(f"Putting metric for param: {param} with unit: {unit_for_metric} and value: {value}")
+            self.logger.debug(f"API response: {response}")
 
 
 if __name__ == '__main__':
