@@ -1,4 +1,6 @@
 # apcmetrics2cloudwatch
+## About
+Script for publishing APC UPS (apcupsd) metrics into AWS CloudWatch Metrics
 ## Installation on Ubuntu Linux
 * Install apcupsd package:
 ```
@@ -80,8 +82,8 @@ paź 24 14:03:39 michal-Z390 apcupsd[34708]: NIS server startup succeeded
 ```
 $ apcaccess
 
-APC      : 001,018,0438
-DATE     : 2020-10-24 14:03:40 +0200
+APC      : 001,043,1020
+DATE     : 2020-10-24 14:35:59 +0200
 HOSTNAME : michal-Z390
 VERSION  : 3.14.14 (31 May 2016) debian
 UPSNAME  : homeups1
@@ -89,18 +91,43 @@ CABLE    : USB Cable
 DRIVER   : USB UPS Driver
 UPSMODE  : Stand Alone
 STARTTIME: 2020-10-24 14:03:38 +0200
-STATUS   :
+MODEL    : Smart-UPS 1500
+STATUS   : ONLINE
+LINEV    : 233.2 Volts
+LOADPCT  : 12.3 Percent
+BCHARGE  : 100.0 Percent
+TIMELEFT : 114.0 Minutes
 MBATTCHG : 10 Percent
 MINTIMEL : 3 Minutes
 MAXTIME  : 0 Seconds
+OUTPUTV  : 233.2 Volts
+SENSE    : High
+DWAKE    : -1 Seconds
+DSHUTD   : 90 Seconds
+LOTRANS  : 208.0 Volts
+HITRANS  : 253.0 Volts
+RETPCT   : 0.0 Percent
+ITEMP    : 25.6 C
+ALARMDEL : 30 Seconds
+BATTV    : 27.7 Volts
+LINEFREQ : 50.0 Hz
+LASTXFER : Automatic or explicit self test
 NUMXFERS : 0
 TONBATT  : 0 Seconds
 CUMONBATT: 0 Seconds
 XOFFBATT : N/A
-STATFLAG : 0x05000000
-END APC  : 2020-10-24 14:03:40 +0200
+SELFTEST : NO
+STESTI   : 14 days
+STATFLAG : 0x05000008
+MANDATE  : 2009-03-24
+SERIALNO : AS0913220780
+BATTDATE : 2020-10-24
+NOMOUTV  : 230 Volts
+NOMBATTV : 24.0 Volts
+FIRMWARE : 653.18.I USB FW:7.3
+END APC  : 2020-10-24 14:36:02 +0200
 ```
-* Open upsmetrics.service.example file in the editor and set correct path to put_metrics.py script 
+* Open **upsmetrics.service.example** file in the editor and set correct path to **put_metrics.py** script
 * Copy new service configuration file for systemd:
 ```
 sudo cp upsmetrics.service.example /lib/systemd/system/upsmetrics.service
@@ -123,6 +150,9 @@ sudo systemctl status upsmetrics
 
 paź 24 14:10:32 michal-Z390 systemd[1]: Started Put APC UPS metrics to AWS CloudWatch.
 ```
+## AWS Credentials
+Put AWS Credentials under "cloudwatch" profile into *.aws/credentials* file located in the home directory of the service user.
+Make sure the associated policy allows only for PutMetricData operation.
 ## Define and publish AWS CloudWatch Dashboard
 [Example CloudWatch Dashboard](https://cloudwatch.amazonaws.com/dashboard.html?dashboard=Home-UPS-APC&context=eyJSIjoidXMtZWFzdC0xIiwiRCI6ImN3LWRiLTcxMDM5ODUwNDIwOSIsIlUiOiJ1cy1lYXN0LTFfYXcxb0JtODdUIiwiQyI6Im90Y3FuaDEybHYwbWhmbGVzamJocm04azUiLCJJIjoidXMtZWFzdC0xOjg4YmY2ODBiLWYxMTQtNDVjOS05YzlkLTE4OTUzZTdlNDIxMSIsIk0iOiJQdWJsaWMifQ%3D%3D)
 
