@@ -163,3 +163,5 @@ Once metrics are gathering we can create dashboards in the AWS Management Consol
 Put AWS Credentials (access key and secret access key) under "cloudwatch" profile into *.aws/credentials* file located in the home directory of the service user.
 Make sure the associated policy allows **ONLY** for PutMetricData operations.
 
+## Links
+[Publishing UPS metrics into the AWS CloudWatch](https://michal-kosinski.medium.com/publishing-ups-metrics-into-the-aws-cloudwatch-55bb600c1745)
