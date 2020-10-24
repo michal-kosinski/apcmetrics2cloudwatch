@@ -131,7 +131,7 @@ NOMBATTV : 24.0 Volts
 FIRMWARE : 653.18.I USB FW:7.3
 END APC  : 2020-10-24 14:36:02 +0200
 ```
-## Installation and configuration of script for metrics publishing
+## Installation and configuration of metrics publishing script
 * Open **upsmetrics.service** example file in the editor and set correct path to **put_metrics.py** script
 * Copy modified configuration file to the systemd directory:
 ```
