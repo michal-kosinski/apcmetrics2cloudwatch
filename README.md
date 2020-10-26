@@ -168,13 +168,16 @@ If you run upsmetrics service 24x7 for a 30-day month with 5 minutes granularity
 
 Total number of metrics = 11 metrics
 
-First 10,000 custom metrics @$0.30 per metric = 11 * $0.30 = $3,3
-
-First 1,000,000 API requests = $0
+First 10,000 custom metrics @$0.30 per metric = 11 * $0.30 = $3,3 (you can have 10 Custom Metrics for free)
 
 Total number of API requests = 11 * (43,200 minutes/5 minutes) = 95040
 
-**Monthly CloudWatch charges = $3,3 per month**
+First 1,000,000 API requests = $0
+
+Dashboard $3.00 per dashboard per month (you can have 3 Dashboards for up to 50 metrics per month for free)
+
+**Monthly CloudWatch charges = $6,3 per month**
+**Monthly CloudWatch charges = $0,3 per month (Free Tier Always Free offer)**
 
 ## Links
 @medium.com: [Publishing UPS metrics into the AWS CloudWatch](https://michal-kosinski.medium.com/publishing-ups-metrics-into-the-aws-cloudwatch-55bb600c1745)
