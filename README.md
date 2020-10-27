@@ -177,6 +177,7 @@ First 1,000,000 API requests = $0
 Dashboard $3.00 per dashboard per month (you can have 3 Dashboards for up to 50 metrics per month for free)
 
 **Monthly CloudWatch charges = $6,3 per month**
+
 **Monthly CloudWatch charges = $0,3 per month (Free Tier Always Free offer)**
 
 ## Links
