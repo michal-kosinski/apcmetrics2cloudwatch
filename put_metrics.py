@@ -77,6 +77,7 @@ class PutUpsMetricsToCloudWatch:
             )
             self.logger.info(f"Putting metric for param: {param} with unit: {unit_for_metric} and value: {value}")
             self.logger.debug(f"API response: {response}")
+        self.logger.info("All metrics sent.")
 
 
 while True:
